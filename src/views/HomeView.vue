@@ -61,6 +61,7 @@ const submit = async () => {
                     name="form-name"
                     value="userDeletionForm"
                 />
+                <input type="hidden" name="name" value="Chris" />
                 <InputComponent
                     v-model:input-name="name"
                     :input-label="'Name'"
