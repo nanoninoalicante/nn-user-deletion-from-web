@@ -4,6 +4,7 @@ const name = ref("");
 const userEmail = ref("");
 const phone = ref("");
 const requestType = ref("");
+const loading = ref(false);
 
 export const useFormData = () => {
     return {
@@ -11,5 +12,6 @@ export const useFormData = () => {
         userEmail,
         phone,
         requestType,
+        loading,
     };
 };

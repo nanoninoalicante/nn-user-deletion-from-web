@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import { useFormData } from "./composables/form";
+const { loading } = useFormData();
 </script>
 
 <template>

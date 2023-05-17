@@ -12,7 +12,12 @@ defineEmits(["update:inputName", "update:validation"]);
             id="name"
             :value="inputName"
             @blur="validation.$touch"
-            @input="$emit('update:inputName', $event.target?.value)"
+            @input="
+                $emit(
+                    'update:inputName',
+                    ($event.target as HTMLInputElement).value,
+                )
+            "
             type="text"
             class="py-4 px-4 rounded-3xl bg-white border-2 border-gray-100 w-full"
             :class="{
