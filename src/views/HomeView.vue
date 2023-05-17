@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import InputComponent from "../components/InputComponent.vue";
 import { useFormData } from "../composables/form";
 import { useVuelidate } from "@vuelidate/core";
@@ -9,6 +10,8 @@ const phoneNumberRegex =
 
 const phoneNumber = (value: any) => phoneNumberRegex.test(value);
 
+const userDeletionForm = ref();
+
 const rules = {
     name: { required },
     userEmail: { required, email },
@@ -16,12 +19,20 @@ const rules = {
 };
 const v$ = useVuelidate(rules, { name, userEmail, phone, requestType });
 
-const submit = () => {
+const submit = async () => {
     if (v$.$invalid) {
         v$.$touch();
         return;
     }
-    alert("Form submitted!");
+    console.log("form: ", userDeletionForm.value);
+    const formData: any = new FormData(userDeletionForm.value);
+    await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+    })
+        .then(() => console.log("Form successfully submitted"))
+        .catch((error) => alert(error));
 };
 </script>
 
@@ -43,8 +54,7 @@ const submit = () => {
                 id="userDeletionForm"
                 name="userDeletionForm"
                 class="flex w-full flex-col space-y-6 justify-center items-stretch"
-                method="POST"
-                netlify
+                ref="userDeletionForm"
             >
                 <input
                     type="hidden"
@@ -69,6 +79,7 @@ const submit = () => {
                 <button
                     :disabled="v$.$invalid"
                     type="submit"
+                    @click.prevent="submit"
                     class="p-4 w-full md:w-56 bg-blue-900 border-2 border-gray-200 text-white hover:bg-blue-700 active:bg-blue-600 hover:text-white my-4 rounded-3xl disabled:bg-gray-100 disabled:text-gray-200 disabled:cursor-not-allowed"
                 >
                     Submit Request
