@@ -9,7 +9,7 @@ defineEmits(["update:inputName", "update:validation"]);
             inputLabel
         }}</label>
         <input
-            id="name"
+            :id="inputName"
             :value="inputName"
             @blur="validation.$touch"
             @input="

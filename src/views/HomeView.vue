@@ -41,10 +41,16 @@ const submit = () => {
         <div class="flex flex-col space-y-4 justify-center items-center">
             <form
                 id="userDeletionForm"
+                name="userDeletionForm"
                 class="flex w-full flex-col space-y-6 justify-center items-stretch"
                 method="POST"
                 netlify
             >
+                <input
+                    type="hidden"
+                    name="form-name"
+                    value="userDeletionForm"
+                />
                 <InputComponent
                     v-model:input-name="name"
                     :input-label="'Name'"
