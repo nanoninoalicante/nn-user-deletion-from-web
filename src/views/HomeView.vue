@@ -42,7 +42,7 @@ const submit = () => {
             <div
                 class="flex w-full flex-col space-y-6 justify-center items-stretch"
             >
-                <form id="userDeletionForm">
+                <form id="userDeletionForm" netlify>
                     <InputComponent
                         v-model:input-name="name"
                         :input-label="'Name'"
