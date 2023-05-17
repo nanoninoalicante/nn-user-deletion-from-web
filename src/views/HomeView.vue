@@ -39,35 +39,34 @@ const submit = () => {
             </p>
         </div>
         <div class="flex flex-col space-y-4 justify-center items-center">
-            <div
+            <form
+                id="userDeletionForm"
                 class="flex w-full flex-col space-y-6 justify-center items-stretch"
+                netlify
             >
-                <form id="userDeletionForm" netlify>
-                    <InputComponent
-                        v-model:input-name="name"
-                        :input-label="'Name'"
-                        :validation="v$?.name"
-                    ></InputComponent>
-                    <InputComponent
-                        v-model:input-name="userEmail"
-                        :input-label="'Email'"
-                        :validation="v$?.userEmail"
-                    ></InputComponent>
-                    <InputComponent
-                        v-model:input-name="phone"
-                        :input-label="'Phone Number'"
-                        :validation="v$?.phone"
-                    ></InputComponent>
-                    <button
-                        @click.prevent="submit"
-                        :disabled="v$.$invalid"
-                        type="submit"
-                        class="p-4 w-full md:w-56 bg-blue-900 border-2 border-gray-200 text-white hover:bg-blue-700 active:bg-blue-600 hover:text-white my-4 rounded-3xl disabled:bg-gray-100 disabled:text-gray-200 disabled:cursor-not-allowed"
-                    >
-                        Submit Request
-                    </button>
-                </form>
-            </div>
+                <InputComponent
+                    v-model:input-name="name"
+                    :input-label="'Name'"
+                    :validation="v$?.name"
+                ></InputComponent>
+                <InputComponent
+                    v-model:input-name="userEmail"
+                    :input-label="'Email'"
+                    :validation="v$?.userEmail"
+                ></InputComponent>
+                <InputComponent
+                    v-model:input-name="phone"
+                    :input-label="'Phone Number'"
+                    :validation="v$?.phone"
+                ></InputComponent>
+                <button
+                    :disabled="v$.$invalid"
+                    type="submit"
+                    class="p-4 w-full md:w-56 bg-blue-900 border-2 border-gray-200 text-white hover:bg-blue-700 active:bg-blue-600 hover:text-white my-4 rounded-3xl disabled:bg-gray-100 disabled:text-gray-200 disabled:cursor-not-allowed"
+                >
+                    Submit Request
+                </button>
+            </form>
         </div>
     </main>
 </template>
