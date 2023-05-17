@@ -26,7 +26,7 @@ const submit = async () => {
     }
     console.log("form: ", userDeletionForm.value);
     const formData: any = new FormData(userDeletionForm.value);
-    await fetch("/", {
+    await fetch("http://localhost:8888/submit", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString(),
