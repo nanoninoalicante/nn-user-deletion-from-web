@@ -42,6 +42,7 @@ const submit = () => {
             <form
                 id="userDeletionForm"
                 class="flex w-full flex-col space-y-6 justify-center items-stretch"
+                method="POST"
                 netlify
             >
                 <InputComponent
